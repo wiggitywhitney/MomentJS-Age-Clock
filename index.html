@@ -12,16 +12,28 @@
   <div class="countdown"></div>
   <script type="text/javascript">
     window.birthday = prompt('What is your birthday? MM/DD/YYYY')
+
     // invoke displayAge once
     displayAge()
     // invoke displayAge on an interval once a second
     setInterval(displayAge, 1000)
     function displayAge(){
+      var now = moment();
+      var birthday = window.birthday;
+      
+      // Will be the moment return by the moment module, with preciseDiff appended
+     //var moment = ('moment-precise-range');
+
+      var result = moment.preciseDiff(moment(birthday, 'MM/DD/YYYY'),
+                                      now);
+
+      // 3 months 11 days 14 hours 45 minutes a few seconds
+
       /* 
       Use moment() to create a new moment object from the present time
       Fix this function to display someone's exact age
       */
-      document.querySelector('.countdown').innerHTML = moment()
+      document.querySelector('.countdown').innerHTML = result;
     }
   </script>
 </body>
